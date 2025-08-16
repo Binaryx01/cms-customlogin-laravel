@@ -9,8 +9,15 @@ class PostController extends Controller
     
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(5);
         return view('welcome', compact('posts'));
+    }
+
+    public function dashboard()
+    {
+        $posts = Post::paginate(5);
+        return view('dashboard',compact('posts'));
+
     }
 
 
@@ -37,7 +44,22 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post created successfully!');
     }
     
+public function edit(Post $post)
+{
+    // Pass the post variable to the view correctly
+    return view('admindashboard.edit', compact('post'));
+}
 
+public function update(Request $request, Post $post)
+{
+    $request->validate([
+        'title' => 'required|max:255',
+        'content' => 'required',
+    ]);
 
+    // Update only the fillable fields
+    $post->update($request->only(['title', 'content']));
 
+    return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
+}
 }

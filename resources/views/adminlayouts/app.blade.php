@@ -15,7 +15,7 @@
             <h4 class="mb-4">Menu</h4>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link">🏠 Dashboard</a>
+                    <a href="{{route('dashboard')}}" class="nav-link">🏠 Dashboard</a>
                 </li>
 
                 <li class="nav-item mb-2">
