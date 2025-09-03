@@ -15,7 +15,7 @@ Route::post('login',[AuthController::class,'login'])->name('posts.login');
 
 });
 
-
+Route::get('/category/{slug}', [PostController::class, 'showByCategory'])->name('category.posts');
 
 Route::middleware('auth')->group(function(){
 Route::get('/dashboard', function () {

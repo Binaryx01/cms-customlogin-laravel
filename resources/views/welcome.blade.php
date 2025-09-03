@@ -2,19 +2,19 @@
 @section('content')
 
 
-<br><br>
+    <br><br>
 
-<div class="container">
-    @foreach($posts as $post)
+    <div class="container">
+        @foreach($posts as $post)
 
-    <h1>{{$post->title}}</h1>
-    <h5>{{$post->content}}</h5>
+            <h1>{{$post->title}}</h1>
+            <h5>{{$post->content}}</h5>
+            {{ $post->category ? $post->category->categoryname : 'No Category' }}
 
-    <hr>
+            <hr>
 
-    @endforeach
-</div>
+        @endforeach
+    </div>
 
 
 @endsection
-
